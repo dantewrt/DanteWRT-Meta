@@ -16,7 +16,7 @@ Settingan pada Tab Plugin Settings berikut :
 
 ## Operation Mode
 
-- Operation Mode Pastikan pada mode Redir-Host Mode, jika belum **SWITCH PAGE TO REDIR-HOST MODE** terlebih dahulu
+- Operation Mode Pastikan pada mode **Redir-Host Mode**, jika belum **SWITCH PAGE TO REDIR-HOST MODE** terlebih dahulu
 - Select Mode **Redir-host(tun-mode)**
 - Centang Enable Meta Core
 - Ceklist/centang opsi sesuai gambar berikut:
