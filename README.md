@@ -20,4 +20,68 @@ Settingan pada Tab Plugin Settings berikut :
 
 [![Gambar Setting DNS](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/dnssetting-1.PNG "Setting DNS")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/dnssetting-1.PNG)
 
-# Over
+# Overwrite Settings
+
+Settingan pada Tab **Overwrite Settings** berikut :
+
+## DNS Settings
+
+- Ceklist/centang opsi dan ikuti settingan sesuai gambar berikut:
+
+[![Gambar Setting DNS](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/dnssetting-2.PNG "Setting DNS")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/dnssetting-2.PNG)
+
+```
+fallback-filter:
+  geoip: true
+  geoip-code: ID
+  ipcidr:
+    - 240.0.0.0/4
+  domain:
+    - "+.google.com"
+    - "+.facebook.com"
+    - "+.youtube.com"
+```
+
+## Meta Settings
+
+- Ceklist/centang opsi dan ikuti settingan sesuai gambar berikut:
+
+[![Gambar Setting Meta](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metasetting-1.PNG "Setting Meta")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metasetting-1.jpg)
+
+[![Gambar Setting Meta](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metasetting-2.PNG "Setting Meta")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metasetting-2.PNG)
+
+```
+force-domain:
+  - '+.netflix.com'
+  - '+.nflxvideo.net'
+  - '+.amazonaws.com'
+  - '+.media.dssot.com'
+```
+
+```
+sniff:
+  TLS:
+    ports: [443, 853, 8443]
+  HTTP:
+    ports: [80, 8080-8880]
+    override-destination: true
+ ```
+ 
+[![Gambar Setting Meta](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metasetting-3.PNG "Setting Meta")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metasetting-3.PNG)
+
+```
+skip-sni:
+  - '+.courier.push.apple.com'
+  - 'Mijia Cloud'
+  - '+.jd.com'
+```
+
+## Kernel Meta
+
+### Official
+
+- Download kernel [Meta Alpha]([https://github.com/MetaCubeX/Clash.Meta/releases/latest](https://github.com/MetaCubeX/Clash.Meta/releases/tag/Prerelease-Alpha))
+- Pilih file bernama **clash.meta-linux-arm64-alpha-xxx.gz**
+- Upload file tersebut pada tab **Config Manage** sebagai **Upload File Type : [Meta] Core File**
+
+[![Gambar Meta Core](https://raw.githubusercontent.com/rfxcll/open_meta/main/images/metacore.PNG "Meta Core")](https://raw.githubusercontent.com/rfxcll/open_meta/main/images/metacore.PNG)
