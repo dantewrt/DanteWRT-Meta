@@ -80,7 +80,7 @@ skip-sni:
 
 ### Official
 
-- Download kernel [Meta Alpha](https://github.com/MetaCubeX/Clash.Meta/releases/latest](https://github.com/MetaCubeX/Clash.Meta/releases/tag/Prerelease-Alpha)
+- Download kernel [Meta Alpha](https://github.com/MetaCubeX/Clash.Meta/releases/tag/Prerelease-Alpha)
 - Pilih file bernama **clash.meta-linux-arm64-alpha-xxx.gz**
 - Upload file tersebut pada tab **Config Manage** sebagai **Upload File Type : [Meta] Core File**
 
