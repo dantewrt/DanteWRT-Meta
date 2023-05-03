@@ -84,4 +84,4 @@ skip-sni:
 - Pilih file bernama **clash.meta-linux-arm64-alpha-xxx.gz**
 - Upload file tersebut pada tab **Config Manage** sebagai **Upload File Type : [Meta] Core File**
 
-[![Gambar Meta Core](https://raw.githubusercontent.com/rfxcll/open_meta/main/images/metacore.PNG "Meta Core")](https://raw.githubusercontent.com/rfxcll/open_meta/main/images/metacore.PNG)
+[![Gambar Meta Core](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metacore.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metacore.PNG)
