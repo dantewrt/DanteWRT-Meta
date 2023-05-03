@@ -1,14 +1,2 @@
 proxies:
-- name: SG AMP
-  server: 104.16.51.111
-  port: 443
-  type: trojan
-  password: c492e140-ce32-11ed-852c-1239d0255272
-  network: ws
-  sni: sg-2.test3.net
-  skip-cert-verify: true
-  udp: true
-  ws-opts:
-    path: /howdy
-    headers:
-        Host: sg-2.test3.net
+#isi akun kalian (untuk server singapore)
