@@ -82,6 +82,7 @@ skip-sni:
 
 - Download kernel [Meta Alpha](https://github.com/MetaCubeX/Clash.Meta/releases/tag/Prerelease-Alpha)
 - Pilih file bernama **clash.meta-linux-arm64-alpha-xxx.gz**
-- Upload file tersebut pada tab **Config Manage** sebagai **Upload File Type : [Meta] Core File**
+- Upload file tersebut pada tab **Config Manage**
+- **Upload File Type : [Meta] Core File**
 
 [![Gambar Meta Core](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metacore.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metacore.PNG)
