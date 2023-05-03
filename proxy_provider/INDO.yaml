@@ -1,27 +1,2 @@
 proxies:
-- name: EDM
-  server: 104.16.51.111
-  port: 443
-  type: trojan
-  password: 1f8d0c64-dd1a-4c77-a733-c215967eae11
-  network: ws
-  sni: era.inspiredau.biz.id
-  skip-cert-verify: true
-  udp: true
-  ws-opts:
-    path: /trojan
-    headers:
-        Host: era.inspiredau.biz.id
-- name: DTC 2
-  server: 104.16.51.111
-  port: 443
-  type: trojan
-  password: 7ef42e09-1481-4df9-8d1a-de16c1e9eb26
-  network: ws
-  sni: id2.auinspired.my.id
-  skip-cert-verify: true
-  udp: true
-  ws-opts:
-    path: /trojan
-    headers:
-        Host: id2.auinspired.my.id
+#isi akun kalian
