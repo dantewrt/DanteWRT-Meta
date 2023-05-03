@@ -2,6 +2,14 @@
 
 Simak baik-baik apa saja yang disetting, pastikan sama dengan settingan berikut
 
+# Import Config
+
+- Import Config **DanteWRT-Meta.yaml** terlebih dahulu, Lakukan Pada Tab **Config Manage**
+
+[![Gambar Import Config](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/import-1.PNG "Import Config")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/import-1.PNG)
+
+- Setelah itu upload **Rule Provider** & **Proxy Provider** seperti biasa
+
 # Plugin Settings
 
 Settingan pada Tab Plugin Settings berikut :
