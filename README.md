@@ -23,6 +23,12 @@ Settingan pada Tab Plugin Settings berikut :
 
 [![Gambar Operation Mode](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/operationmode.PNG "Operation Mode")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/operationmode.PNG)
 
+## Traffic Control
+
+- Ceklist/centang opsi sesuai gambar berikut:
+
+[![Gambar Operation Mode](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/operationmode-2.jpg "Operation Mode")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/operationmode-2.jpg)
+
 ## DNS Settings
 - Setting sesuai gambar berikut :
 
