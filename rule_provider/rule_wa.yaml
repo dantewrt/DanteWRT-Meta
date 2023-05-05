@@ -11,7 +11,6 @@ payload:
   - DOMAIN-SUFFIX,mmg.whatsapp.net
   - DOMAIN-SUFFIX,media.fbdj2-1.fna.whatsapp.net
   - DOMAIN-SUFFIX,media-xsp1-2.cdn.whatsapp.net
-  - DOMAIN,graph.facebook.com
   - DOMAIN-SUFFIX,whatsapp.biz
   - DOMAIN-SUFFIX,whatsapp.com
   - DOMAIN-SUFFIX,whatsapp.net
@@ -32,7 +31,6 @@ payload:
   - IP-CIDR,54.242.0.0/15
   - IP-CIDR,69.171.235.0/16
   - IP-CIDR,75.126.150.0/16
-  - DST-PORT,5228
   - DST-PORT,3478
   - DST-PORT,4244
   - DST-PORT,5222
