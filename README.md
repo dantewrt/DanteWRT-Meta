@@ -109,12 +109,12 @@ Jika mengalami Error **CHNROUTE CIDR LIST** Seperti gambar dibawah ini.
 
 untuk memperbaikinya : 
 - Pastikan Kamu punya Kuota Reguler, Jika tidak punya;
-- Masuk Pada Tab **Plugin Settings** --> **Traffic Control** lalu Hilangkan Ceklis pada **Disable Quic** Setelah itu Commit Setting lalu Apply Settings
+- Masuk Pada Tab _**Plugin Settings**_ --> _**Traffic Control**_ lalu Hilangkan Ceklis pada _**Disable Quic**_ Setelah itu Commit Setting lalu Apply Settings
 
 [![Gambar Fix Error](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/FixError-2.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/FixError-2.PNG)
 
 - Setelah Apply Setting Pastikan Openclash Sudah Berjalan dan Ada Koneksi Internetnya;
-- Jika Sudah, Masuk Ke Tab **Plugin Settings** --> **Chnroute Update** Lalu klik _**CHECK AND UPDATE**_ , lalu tunggu sampai selesai
+- Jika Sudah, Masuk Ke Tab _**Plugin Settings**_ --> _**Chnroute Update**_ Lalu klik _**CHECK AND UPDATE**_ , lalu tunggu sampai selesai
 
 [![Gambar Fix Error](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/FixError-3.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/FixError-3.PNG)
 
