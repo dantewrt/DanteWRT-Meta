@@ -1,0 +1,253 @@
+---
+proxy-providers:
+  AKUN ID:
+    type: file
+    path: "./proxy_provider/INDO.yaml"
+    health-check:
+      enable: true
+      url: http://ping.xmbb.net
+      interval: '180'
+  AKUN SG:
+    type: file
+    path: "./proxy_provider/VPN.yaml"
+    health-check:
+      enable: true
+      url: http://ping.xmbb.net
+      interval: '180'
+proxy-groups:
+- name: Indonesia
+  type: select
+  disable-udp: false
+  use:
+  - AKUN ID
+  url: http://ping.xmbb.net
+  interval: '180'
+- name: Singapore
+  type: select
+  disable-udp: false
+  use:
+  - AKUN SG
+  url: http://ping.xmbb.net
+  interval: '180'
+- name: INTERNET
+  type: select
+  disable-udp: false
+  proxies:
+  - REJECT
+  - DIRECT
+  - Indonesia
+  - Singapore
+- name: E-Wallet - Bank
+  type: select
+  disable-udp: false
+  proxies:
+  - INTERNET
+  - Indonesia
+  - DIRECT
+- name: Port-Gaming
+  type: select
+  disable-udp: false
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - DIRECT
+- name: Gaming
+  type: select
+  disable-udp: false
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - DIRECT
+- name: Blokir-Iklan
+  type: select
+  disable-udp: false
+  proxies:
+  - REJECT
+  - INTERNET
+- name: Whatsapp
+  type: select
+  disable-udp: false
+  proxies:
+  - INTERNET
+  - DIRECT
+- name: 18+
+  type: select
+  disable-udp: false
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - REJECT
+redir-port: 7892
+tproxy-port: 7895
+port: 7890
+socks-port: 7891
+mixed-port: 7893
+mode: rule
+log-level: debug
+allow-lan: true
+external-controller: 0.0.0.0:9090
+secret: reyre
+bind-address: "*"
+external-ui: "/usr/share/openclash/ui"
+ipv6: false
+geodata-mode: true
+geodata-loader: memconservative
+tcp-concurrent: true
+unified-delay: true
+dns:
+  enable: true
+  ipv6: false
+  default-nameserver:
+  - 8.8.8.8
+  - 8.8.4.4
+  - 192.168.8.1
+  enhanced-mode: redir-host
+  listen: 0.0.0.0:7874
+  nameserver:
+  - 8.8.8.8
+  - 8.8.4.4
+  - dhcp://"eth1"
+  - 192.168.8.1
+  fallback:
+  - 8.8.8.8
+  - 8.8.4.4
+  - 192.168.8.1
+  fallback-filter:
+    geoip: true
+    geoip-code: ID
+    ipcidr:
+    - 240.0.0.0/4
+    domain:
+    - "+.google.com"
+    - "+.facebook.com"
+    - "+.youtube.com"
+profile:
+  store-selected: true
+  store-fake-ip: true
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  force-domain:
+  - "+.netflix.com"
+  - "+.nflxvideo.net"
+  - "+.amazonaws.com"
+  - "+.media.dssot.com"
+  skip-domain:
+  - "+.courier.push.apple.com"
+  - Mijia Cloud
+  - "+.jd.com"
+  - dlg.io.mi.com
+  sniff:
+    TLS:
+      ports:
+      - 443
+      - 182-183
+      - 853
+      - 8443
+    HTTP:
+      ports:
+      - 80
+      - 8080-8880
+      override-destination: true
+rules:
+- DST-PORT,7895,REJECT
+- DST-PORT,7892,REJECT
+- IP-CIDR,198.18.0.1/16,REJECT,no-resolve
+- DST-PORT,21-22,DIRECT
+- RULE-SET,rule_reject,Blokir-Iklan
+- RULE-SET,rule_wa,Whatsapp
+- RULE-SET,rule_porn,18+
+- RULE-SET,rule_bank,E-Wallet - Bank
+- DST-PORT,5000-5221/5224-5227/5229-5241/5243-5287/5289-5352/5354-5509/5517/5520-5529/5551-5559/5601-5700/8443/9000-9010/9443/10003/30000-30300,Port-Gaming,tcp
+- DST-PORT,5517-5529/5551-5559/5601-5700/8001/8130/8443/9000-9010/9120/9992/10003/30000-30300,Port-Gaming,udp
+- DST-PORT,6006/6008/6674/7006-7008/7889/8001-8012/9006/9137/10000-10012/11000-11019/12006/12008/13006/15006/20561/39003/39006/39698/39779/39800,Port-Gaming,tcp
+- DST-PORT,6006/6008/6674/7006-7008/7889/8008/8001-8012/8130/8443/9008/9120/10000-10015/10100/11000-11019/12008/13008,Port-Gaming,udp
+- DST-PORT,8085-8088/10012/14000/15692/17000/17500/18081/20000-20002/20371,Port-Gaming,tcp
+- DST-PORT,7086-7995/8011-8013/8700/9030-9031/10013/10019/10039/10096/10491/10612/11455/12235/13748/13894/13972/17000/17500/20000-20002/12070-12460/41182-41192,Port-Gaming,udp
+- DST-PORT,8013/8085/10000-10019/18082/20000/50000/65010/65050,Port-Gaming,tcp
+- DST-PORT,7500-7995/8700/9030/10010-10019/20000-20001,Port-Gaming,udp
+- DST-PORT,8013/10000-10001/18082/20000-20001/20166/31003/33445/50000,Port-Gaming,tcp
+- DST-PORT,5008/8011/8700/10000/14050/14080/17000,Port-Gaming,udp
+- DST-PORT,5055-5058,Port-Gaming,udp
+- DST-PORT,16100/27015/27036,Port-Gaming,tcp
+- DST-PORT,27015/27031-27036,Port-Gaming,udp
+- DST-PORT,42472,Port-Gaming,tcp
+- DST-PORT,42472/22101-22102,Port-Gaming,udp
+- DST-PORT,23301,Port-Gaming,tcp
+- DST-PORT,23301,Port-Gaming,udp
+- DST-PORT,9330-9340,Port-Gaming,tcp
+- DST-PORT,9330-9340,Port-Gaming,udp
+- DST-PORT,2080-2099,Port-Gaming,tcp
+- DST-PORT,5100,Port-Gaming,udp
+- DST-PORT,9100-9200/8230-8250/8110-8120/27000-28998,Port-Gaming,tcp
+- DST-PORT,27000-28998/39000,Port-Gaming,udp
+- DST-PORT,7770-7790,Port-Gaming,tcp
+- DST-PORT,16300-16350,Port-Gaming,udp
+- DST-PORT,44590-44610,Port-Gaming,tcp
+- DST-PORT,40000-40010,Port-Gaming,udp
+- DST-PORT,10500-10515,Port-Gaming,tcp
+- DST-PORT,60970-60980,Port-Gaming,udp
+- DST-PORT,27015-27030/27036-27037,Port-Gaming,tcp
+- DST-PORT,4380/27000-27031/27036,Port-Gaming,udp
+- DST-PORT,14422,Port-Gaming
+- DST-PORT,16999,Port-Gaming
+- DST-PORT,8013/8888,Port-Gaming
+- DST-PORT,30031,Port-Gaming,tcp
+- DST-PORT,8000/30104,Port-Gaming,udp
+- DST-PORT,39190-39200/49001-49190,Port-Gaming,tcp
+- DST-PORT,40000-40010,Port-Gaming,udp
+- DST-PORT,14009/40005,Port-Gaming
+- DST-PORT,9339,Port-Gaming,tcp
+- DST-PORT,2099/8088/8393-8400,Port-Gaming,tcp
+- DST-PORT,7000-8000/8180-8181/8088/27016-27024/54000-54012,Port-Gaming,udp
+- DST-PORT,5692/8085/8500/10000/10082/20000/25000/29134/31003,Port-Gaming,tcp
+- DST-PORT,5010/6650/8011/8700/20000/25000/29134/30000,Port-Gaming,udp
+- DST-PORT,30100,Port-Gaming,udp
+- AND,((NOT,((RULE-SET,rule_umum))),(NETWORK,TCP)),Port-Gaming
+- AND,((NOT,((RULE-SET,rule_umum))),(NETWORK,UDP)),Port-Gaming
+- RULE-SET,rule_gaming,Gaming
+- RULE-SET,rule_games,Gaming
+- RULE-SET,rule_umum,INTERNET
+rule-providers:
+  rule_wa:
+    type: file
+    behavior: classical
+    path: "./rule_provider/rule_wa.yaml"
+  rule_umum:
+    type: file
+    behavior: classical
+    path: "./rule_provider/rule_umum.yaml"
+  rule_reject:
+    type: file
+    behavior: classical
+    path: "./rule_provider/rule_reject.yaml"
+  rule_gaming:
+    type: file
+    behavior: classical
+    path: "./rule_provider/rule_gaming.yaml"
+  rule_games:
+    type: file
+    behavior: domain
+    path: "./rule_provider/rule_games.yaml"
+  rule_porn:
+    type: file
+    behavior: domain
+    path: "./rule_provider/rule_porn.yaml"
+  rule_bank:
+    type: file
+    behavior: classical
+    path: "./rule_provider/rule_bank.yaml"
+tun:
+  enable: true
+  stack: system
+  device: utun
+  auto-route: false
+  auto-detect-interface: false
+  dns-hijack:
+  - tcp://any:53
+authentication:
+- Clash:oHeRh67o
