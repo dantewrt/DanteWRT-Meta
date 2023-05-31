@@ -157,7 +157,7 @@ rules:
 #Dewasa18+
 - RULE-SET,rule_porn,18+
 #BANK
-- RULE-SET,Bank,E-Wallet - Bank
+- RULE-SET,rule_bank,E-Wallet - Bank
 #MLBB
 - DST-PORT,5000-5221/5224-5227/5229-5241/5243-5287/5289-5352/5354-5509/5517/5520-5529/5551-5559/5601-5700/8443/9000-9010/9443/10003/30000-30300,Port-Gaming,tcp
 - DST-PORT,5517-5529/5551-5559/5601-5700/8001/8130/8443/9000-9010/9120/9992/10003/30000-30300,Port-Gaming,udp
@@ -262,7 +262,7 @@ rule-providers:
     type: file
     behavior: domain
     path: "./rule_provider/rule_porn.yaml"
-  Bank:
+  rule_bank:
     type: file
     behavior: classical
     path: "./rule_provider/bank.yaml"
