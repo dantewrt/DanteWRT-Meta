@@ -1,4 +1,4 @@
-# Tutorial Setting OpenClash
+# Tutorial Setting OpenClash dan Fix Error Config
 
 Simak baik-baik apa saja yang disetting, pastikan sama dengan settingan berikut
 
@@ -100,3 +100,22 @@ Karena Menggunakan Meta Core, Pastikan Download/Update Core Meta ke versi terbar
 - **Upload File Type : [Meta] Core File**
 
 [![Gambar Meta Core](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metacore.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metacore.PNG)
+
+## Fix Error Config
+
+Jika mengalami Error **CHNROUTE CIDR LIST** Seperti gambar dibawah ini.
+
+[![Gambar Fix Error](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/FixError.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/FixError.PNG)
+
+untuk memperbaikinya : 
+- Pastikan Kamu punya Kuota Reguler, Jika tidak punya;
+- Masuk Pada Tab **Plugin Settings** --> **Traffic Control** lalu Hilangkan Ceklis pada **Disable Quic** Setelah itu Commit Setting lalu Apply Settings
+
+[![Gambar Fix Error](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/FixError-2.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/FixError-2.PNG)
+
+- Setelah Apply Setting Pastikan Openclash Sudah Berjalan dan Ada Koneksi Internetnya;
+- Jika Sudah, Masuk Ke Tab **Plugin Settings** --> **Chnroute Update** Lalu klik _**CHECK AND UPDATE**_ , lalu tunggu sampai selesai
+
+[![Gambar Fix Error](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/FixError-3.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/FixError-3.PNG)
+
+- Setelah itu Ceklis kembali **Disable Quic** Lalu Aplly Settings
