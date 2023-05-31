@@ -265,4 +265,4 @@ rule-providers:
   rule_bank:
     type: file
     behavior: classical
-    path: "./rule_provider/bank.yaml"
+    path: "./rule_provider/rule_bank.yaml"
