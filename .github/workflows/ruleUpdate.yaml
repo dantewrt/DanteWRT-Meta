@@ -16,6 +16,10 @@ jobs:
           echo "Downloading rule_games source list..."
           curl -s https://rules.kr328.app/category-games.yaml -o rule_games.yaml
           rm -fr rule_games.yamle
+          
+          echo "Downloading rule_porn source list..."
+          curl -s https://rules.kr328.app/category-porn.yaml -o rule_porn.yaml
+          rm -fr rule_porn.yamle
 
 
       - uses: stefanzweifel/git-auto-commit-action@v4
