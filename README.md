@@ -118,4 +118,4 @@ untuk memperbaikinya :
 
 [![Gambar Fix Error](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/FixError-3.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/FixError-3.PNG)
 
-- Setelah itu Ceklis kembali **Disable Quic** Lalu Aplly Settings
+- Setelah itu Ceklis kembali _**Disable Quic**_ Lalu Aplly Settings
