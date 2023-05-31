@@ -476,3 +476,17 @@ payload:
   - DOMAIN,cloud2.gsdk.proximabeta.com
   - DOMAIN-KEYWORD,kgid
   - DOMAIN-KEYWORD,aovtv
+  # > Honor of Kings (com.levelinfinite.sgameGlobal)
+  - DOMAIN-SUFFIX,iegcom.com
+  - DOMAIN-SUFFIX,intlgame.cn
+  - DOMAIN-SUFFIX,sgameglobal.com
+  - DOMAIN-SUFFIX,singaporepaya.com
+  - DOMAIN-KEYWORD,game-image
+  - DOMAIN-KEYWORD,hok
+# > RPG Toram Online (com.asobimo.toramonline)
+  - DOMAIN-SUFFIX,asobimo.com
+  - DOMAIN-SUFFIX,toram.jp
+  - DOMAIN,toram-jp.akamaized.net
+  - DOMAIN-KEYWORD,toram
+# > Aether Gazer (com.YoStar.AetherGazer)
+  - DOMAIN-SUFFIX,aethergazer.com
