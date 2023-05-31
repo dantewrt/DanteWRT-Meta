@@ -27,7 +27,7 @@ Settingan pada Tab Plugin Settings berikut :
 
 - Ceklist/centang opsi sesuai gambar berikut:
 
-[![Gambar Operation Mode](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/operationmode-2.jpg "Operation Mode")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/operationmode-2.PNG)
+[![Gambar Operation Mode](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/operationmode-2.PNG "Operation Mode")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/operationmode-2.PNG)
 
 ## DNS Settings
 - Setting sesuai gambar berikut :
