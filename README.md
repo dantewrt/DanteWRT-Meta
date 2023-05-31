@@ -94,7 +94,7 @@ skip-sni:
 
 Karena Menggunakan Meta Core, Pastikan Download/Update Core Meta ke versi terbaru terlebih dahulu
 
-- Download kernel [Meta Alpha](https://github.com/MetaCubeX/Clash.Meta/releases/tag/Prerelease-Alpha)
+- Download kernel **--> [Meta Alpha](https://github.com/MetaCubeX/Clash.Meta/releases/tag/Prerelease-Alpha)**
 - Pilih file bernama **clash.meta-linux-arm64-alpha-xxx.gz**
 - Upload file tersebut pada tab **Config Manage**
 - **Upload File Type : [Meta] Core File**
