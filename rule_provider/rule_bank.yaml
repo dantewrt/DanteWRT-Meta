@@ -59,7 +59,6 @@ payload:
 
 #Muamalat
 - DOMAIN-SUFFIX,bankmuamalat.co.id
-
 - DOMAIN-SUFFIX,bni.co.id
 - DOMAIN-SUFFIX,bankbsi.co.id
 - DOMAIN-SUFFIX,cimbniaga.co.id
@@ -81,3 +80,8 @@ payload:
 - DOMAIN-SUFFIX,banksulbar.co.id
 - DOMAIN-SUFFIX,.banksultim.co.id
 - DOMAIN-SUFFIX,bankpapua.co.id
+
+#Flip.id
+- DOMAIN-KEYWORD,flip.id
+- DOMAIN-KEYWORD,nexus-websocket-a.intercom.io
+- DOMAIN-KEYWORD,mobile-sdk-api.intercom.io
