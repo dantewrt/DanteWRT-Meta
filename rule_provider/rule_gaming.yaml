@@ -13,6 +13,9 @@ payload:
   - DOMAIN-SUFFIX,youngjoygame.com
   - DOMAIN-SUFFIX,yuanzhanapp.com
   - DOMAIN-SUFFIX,aihelp.net
+  - DOMAIN,tnc16-alisg.isnssdk.com
+  - DOMAIN,gplog-sg.byteoversea.com
+  - DOMAIN,xlog.byteoversea.com
   # FreeFire
   - DOMAIN-SUFFIX,freefiremobile.com
   - DOMAIN-KEYWORD,freefire
