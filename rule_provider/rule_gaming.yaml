@@ -16,6 +16,18 @@ payload:
   - DOMAIN,tnc16-alisg.isnssdk.com
   - DOMAIN,gplog-sg.byteoversea.com
   - DOMAIN,xlog.byteoversea.com
+  - DOMAIN,log-va.bytegsdk.com
+  - DOMAIN,newlogin.ml.mlbangbang.com
+  - DOMAIN,rtc.rtcplus.com
+  - DOMAIN,rtc-access.rtcplus.com
+  - DOMAIN,rtc-access-sg.rtcplus.com
+  - DOMAIN,rtc-access-va.rtcplus.com
+  - DOMAIN,rtc-access-fr.rtcplus.com
+  - DOMAIN,log-report.rtcplus.com
+  - DOMAIN,www.bytedance.com
+  - DOMAIN,gsdk-va.bytegsdk.com
+  - DOMAIN,gpm-mon-va.bytegsdk.com
+  - DOMAIN,va-effect.byteoversea.com
   # FreeFire
   - DOMAIN-SUFFIX,freefiremobile.com
   - DOMAIN-KEYWORD,freefire
