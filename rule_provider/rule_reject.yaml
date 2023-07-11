@@ -297,7 +297,6 @@ payload:
 - DOMAIN-KEYWORD,adspecs
 - DOMAIN-KEYWORD,adsfs
 - DOMAIN-KEYWORD,adx
-- DOMAIN-KEYWORD,tracking
 - DOMAIN-KEYWORD,logservice
 - DOMAIN-KEYWORD,logbak
 - DOMAIN-KEYWORD,smetrics
