@@ -186,7 +186,7 @@ rules:
 - RULE-SET,R-Direct,Jalur Direct
 - GEOSITE,rule-doh,Jalur Direct
 #AdsBlock
-- RULE-SET,R-_Bypass,INTERNET
+- RULE-SET,R-Bypass,INTERNET
 - GEOSITE,rule-malicious,Blokir-Iklan
 - GEOSITE,oisd-full,Blokir-Iklan
 - GEOSITE,rule-ads,Blokir-Iklan
