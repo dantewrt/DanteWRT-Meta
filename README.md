@@ -5,7 +5,7 @@
     - [Operation Mode](#operation-mode)
     - [Traffic Control](#traffic-control)
     - [DNS Settings](#dns-settings)
-  - [Overwrite Settings](#overwrite-seettings)
+  - [Overwrite Settings](#overwrite-settings)
     - [DNS Settings](#dns-settings)
     - [Meta Settings](#meta-settings)
 - [GEOIP](#geoip)
