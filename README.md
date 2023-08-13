@@ -11,6 +11,7 @@
 - [GEOIP](#geoip)
 - [GEOSITE](#geosite)
 - [Kernel Meta](#kernel-meta)
+- [Credits](#credits)
 
 ## Setting OpenClash
 
@@ -127,3 +128,8 @@ Karena Menggunakan Meta Core, Pastikan Download/Update Core Meta ke versi terbar
 - **Upload File Type : [Meta] Core File**
 
 [![Gambar Meta Core](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metacore.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metacore.PNG)
+
+## Credits
+
+- [rfxcll/open_meta](https://github.com/rfxcll/open_meta)
+- [malikshi/open_meta](https://github.com/malikshi/open_meta)
