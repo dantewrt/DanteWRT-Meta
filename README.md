@@ -84,15 +84,8 @@ skip-sni:
 ```
 ### GEOIP
 
-Wajib menggunakan GeoIP.dat silahkan setting sesuai gambar
-
-```sh
-https://raw.githubusercontent.com/rfxcll/v2ray-rules-dat/release/GeoIP.dat
-```
-
-[![Gambar Setting GeoIP](https://raw.githubusercontent.com/rfxcll/open_meta/main/images/metasetting-3.jpg "Setting GeoIP")](https://raw.githubusercontent.com/rfxcll/open_meta/main/images/metasetting-3.jpg)
-
-Jika belum ada GeoIP pada folder `/etc/openclash/` maka silahkan download terlebih dahulu.
+Wajib menggunakan GeoIP.dat silahkan download terlebih dahulu
+copy lalu pastekan diterminal
 
 ```sh
 curl -o /etc/openclash/GeoIP.dat https://raw.githubusercontent.com/rfxcll/v2ray-rules-dat/release/GeoIP.dat
@@ -102,16 +95,8 @@ chmod 744 /etc/openclash/GeoIP.dat
 ### GEOSITE
 
 Karena semua rule kami pindahkan ke GeoSite.dat maka perlu setting `Custom GeoSite URL` menggunakan hasil compile custom list yang telah kami sediakan.
-
-```sh
-https://raw.githubusercontent.com/rfxcll/v2ray-rules-dat/release/GeoSite.dat
-```
-
-Perhatikan gambar berikut.
-
-[![Gambar Setting GeoSite](https://raw.githubusercontent.com/rfxcll/open_meta/main/images/metasetting-4.jpg "Setting GeoSite")](https://raw.githubusercontent.com/rfxcll/open_meta/main/images/metasetting-4.jpg)
-
-WAJIB menggunakan GeoSite custom kami. Silahkan download terlebih dahulu.
+Silahkan download `Custom GeoSite URL` terlebih dahulu,
+copy lalu pastekan diterminal
 
 ```sh
 curl -o /etc/openclash/GeoSite.dat https://raw.githubusercontent.com/rfxcll/v2ray-rules-dat/release/GeoSite.dat
