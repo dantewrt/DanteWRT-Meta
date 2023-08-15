@@ -84,7 +84,7 @@ skip-sni:
 ```
 ### GEOIP
 
-Wajib menggunakan GeoIP.dat silahkan download terlebih dahulu
+Wajib menggunakan GeoIP.dat, silahkan download terlebih dahulu,
 copy lalu pastekan diterminal
 
 ```sh
