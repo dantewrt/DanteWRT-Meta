@@ -197,7 +197,6 @@ rules:
 - RULE-SET,R-Bank,E-Wallet - Bank
 #ZEROTIER
 - RULE-SET,R-Zerotier,Zerotier
-- OR,((RULE-SET,R-Zerotier),(DST-PORT,9993/29994/40656/40775/43215)),Zerotier
 #STREAMING
 - GEOSITE,rule-streaming,Streaming
 #GAMING
