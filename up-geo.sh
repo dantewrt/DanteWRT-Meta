@@ -7,7 +7,7 @@ yellow='\033[0;33m'
 plain='\033[0m'
 
 geoip="https://raw.githubusercontent.com/rfxcll/v2ray-rules-dat/release/GeoIP.dat"
-geosite="https://raw.githubusercontent.com/rfxcll/v2ray-rules-dat/release/GeoSite.dat"
+geosite="https://cdn.jsdelivr.net/gh/rfxcll/v2ray-rules-dat@release/GeoSite.dat"
 ocloc="/etc/openclash/"
 initd="/etc/init.d"
 nmfl="$(basename "$0")"
