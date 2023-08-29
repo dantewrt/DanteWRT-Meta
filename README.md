@@ -104,6 +104,32 @@ curl -o /etc/openclash/GeoSite.dat https://raw.githubusercontent.com/rfxcll/v2ra
 chmod 744 /etc/openclash/GeoSite.dat
 ```
 
+*Daftar GeoSite yang digunakan*
+  - **DNS DoH**
+    - `geosite:rule-doh`
+  - **Ablock**
+    - `geosite:rule-malicious`
+    - `geosite:oisd-full`
+    - `geosite:rule-ads`
+  - **Porn 18+**
+    - `geosite:oisd-nsfw`
+    - `geosite:category-porn`
+  - **Marketplace-ID**
+    - `geosite:ecommerce-id`
+       - Lazada
+       - Tokopedia
+       - Shopee
+       - [Cek List disini](https://github.com/rfxcll/v2ray-rules-dat/blob/rule/rule_streaming.txt)
+  - **Streaming**
+    - `geosite:rule-streaming`
+       - [Cek List disini](https://github.com/rfxcll/v2ray-rules-dat/blob/rule/rule_streaming.txt)
+  - **Sosmed**
+    - `geosite:rule-sosmed`
+       - [Cek List disini](https://github.com/rfxcll/v2ray-rules-dat/blob/rule/rule_sosmed.txt)
+  - **Gaming**
+    - `geosite:rule-gaming`
+       - [Cek List disini](https://github.com/rfxcll/v2ray-rules-dat/blob/rule/rule_gaming.txt)
+
 ### Kernel Meta
 
 Karena Menggunakan Meta Core, Pastikan Download/Update Core Meta ke versi terbaru terlebih dahulu
