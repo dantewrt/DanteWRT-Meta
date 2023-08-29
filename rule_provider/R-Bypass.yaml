@@ -2,5 +2,4 @@ payload:
 # Bypass AdBlock
   - DOMAIN,pagead2.googlesyndication.com
   - DOMAIN,adservice.google.com
-  - DOMAIN,api.shopee.co.id
   - DOMAIN-SUFFIX,googleadservices.com
