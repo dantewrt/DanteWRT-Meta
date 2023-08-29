@@ -114,6 +114,15 @@ Karena Menggunakan Meta Core, Pastikan Download/Update Core Meta ke versi terbar
 
 [![Gambar Meta Core](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metacore.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metacore.PNG)
 
+### Test Adblock
+
+`Adblock 92%`
+[![Gambar Test Adblock](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/adblock1.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/adblock1.PNG)
+[![Gambar Test Adblock](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/adblock2.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/adblock2.PNG)
+
+Bypass Website Adblock Warning
+[![Gambar Test Adblock](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/adblock3.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/adblock3.PNG)
+
 ## Credits
 
 - [rfxcll/open_meta](https://github.com/rfxcll/open_meta)
