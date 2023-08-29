@@ -1,21 +1,5 @@
 payload:
-# > Whatsapp direct
-#  - DOMAIN-KEYWORD,whatsapp.com
-#  - DOMAIN-KEYWORD,whatsapp.net
-#  - DOMAIN-SUFFIX,g.whatsapp.net
-#  - DOMAIN-SUFFIX,web.whatsapp.com
-#  - DOMAIN-SUFFIX,scontent.whatsapp.net
-#  - DOMAIN-SUFFIX,whatsapp.com
-#  - DOMAIN-SUFFIX,static.whatsapp.net
-#  - DOMAIN-SUFFIX,whatsapp.net
-#  - DOMAIN-SUFFIX,mmg.whatsapp.net
-#  - DOMAIN-SUFFIX,media.fbdj2-1.fna.whatsapp.net
-#  - DOMAIN-SUFFIX,media-xsp1-2.cdn.whatsapp.net
-#  - DOMAIN-SUFFIX,whatsapp.biz
-#  - DOMAIN-SUFFIX,whatsapp.com
-#  - DOMAIN-SUFFIX,whatsapp.net
-#  - DOMAIN-SUFFIX,wa.me
-#  - DOMAIN-KEYWORD,whatsapp
+# > WhatsApp Call Only
   - DST-PORT,3478
   - DST-PORT,4244
   - DST-PORT,5222
