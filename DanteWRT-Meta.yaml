@@ -53,6 +53,16 @@ proxy-groups:
   - INTERNET
   - Indonesia
   - DIRECT
+- name: Marketplace-ID
+  type: select
+  disable-udp: false
+  use:
+  - AKUN ID
+  - AKUN SG
+  proxies:
+  - INTERNET
+  - Indonesia
+  - DIRECT
 - name: Gaming TCP
   type: select
   disable-udp: false
@@ -85,6 +95,16 @@ proxy-groups:
   - REJECT
   - INTERNET
 - name: Streaming
+  type: select
+  disable-udp: false
+  use:
+  - AKUN ID
+  - AKUN SG
+  proxies:
+  - DIRECT
+  - REJECT
+  - INTERNET
+- name: Sosmed
   type: select
   disable-udp: false
   use:
@@ -195,10 +215,14 @@ rules:
 - GEOSITE,category-porn,18+
 #BANK
 - RULE-SET,R-Bank,E-Wallet - Bank
+#Marketplace-ID
+- GEOSITE,ecommerce-id,Marketplace-ID
 #ZEROTIER
 - RULE-SET,R-Zerotier,Zerotier
 #STREAMING
 - GEOSITE,rule-streaming,Streaming
+#SOSMED
+- GEOSITE,rule-sosmed,Sosmed
 #GAMING
 - AND,((RULE-SET,R-Portgames),(NETWORK,TCP)),Gaming TCP
 - AND,((RULE-SET,R-Portgames),(NETWORK,UDP)),Gaming UDP
