@@ -11,6 +11,7 @@
 - [GEOIP](#geoip)
 - [GEOSITE](#geosite)
 - [Kernel Meta](#kernel-meta)
+- [Test Adblock](#test-adblock)
 - [Credits](#credits)
 
 ## Setting OpenClash
@@ -114,13 +115,15 @@ Karena Menggunakan Meta Core, Pastikan Download/Update Core Meta ke versi terbar
 
 [![Gambar Meta Core](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metacore.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/metacore.PNG)
 
-### Test Adblock
+## Test Adblock
 
-`Adblock 92%`
+### `Adblock 92%`
+
 [![Gambar Test Adblock](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/adblock1.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/adblock1.PNG)
 [![Gambar Test Adblock](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/adblock2.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/adblock2.PNG)
 
-Bypass Website Adblock Warning
+### `Bypass Website Adblock Warning`
+
 [![Gambar Test Adblock](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/adblock3.PNG "Meta Core")](https://raw.githubusercontent.com/dantewrt/DanteWRT-Meta/main/images/adblock3.PNG)
 
 ## Credits
