@@ -107,7 +107,7 @@ chmod 744 /etc/openclash/GeoSite.dat
 *Daftar GeoSite yang digunakan*
   - **DNS DoH**
     - `geosite:rule-doh`
-  - **Ablock**
+  - **Adblock**
     - `geosite:rule-malicious`
     - `geosite:oisd-full`
     - `geosite:rule-ads`
