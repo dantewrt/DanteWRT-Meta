@@ -1,4 +1,0 @@
-payload:
-- DOMAIN,my.zerotier.com
-- DOMAIN-SUFFIX,zerotier.com
-- DST-PORT,9993/29994/40656/40775/43215
