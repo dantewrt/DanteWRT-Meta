@@ -17,21 +17,18 @@ proxy-providers:
 proxy-groups:
 - name: Indonesia
   type: select
-  disable-udp: false
   use:
   - AKUN ID
   url: http://ping.xmbb.net
   interval: '180'
 - name: Singapore
   type: select
-  disable-udp: false
   use:
   - AKUN SG
   url: http://ping.xmbb.net
   interval: '180'
 - name: INTERNET
   type: select
-  disable-udp: false
   proxies:
   - REJECT
   - DIRECT
@@ -39,13 +36,11 @@ proxy-groups:
   - Singapore
 - name: Jalur Direct
   type: select
-  disable-udp: false
   proxies:
   - DIRECT
   - INTERNET
 - name: E-Wallet - Bank
   type: select
-  disable-udp: false
   use:
   - AKUN ID
   - AKUN SG
@@ -55,7 +50,6 @@ proxy-groups:
   - DIRECT
 - name: Marketplace-ID
   type: select
-  disable-udp: false
   use:
   - AKUN ID
   - AKUN SG
@@ -65,7 +59,6 @@ proxy-groups:
   - DIRECT
 - name: Gaming TCP
   type: select
-  disable-udp: false
   use:
   - AKUN ID
   - AKUN SG
@@ -76,7 +69,6 @@ proxy-groups:
   - DIRECT
 - name: Gaming UDP
   type: select
-  disable-udp: false
   use:
   - AKUN ID
   - AKUN SG
@@ -87,7 +79,6 @@ proxy-groups:
   - DIRECT
 - name: Blokir-Iklan
   type: select
-  disable-udp: false
   use:
   - AKUN ID
   - AKUN SG
@@ -96,7 +87,6 @@ proxy-groups:
   - INTERNET
 - name: Streaming
   type: select
-  disable-udp: false
   use:
   - AKUN ID
   - AKUN SG
@@ -106,7 +96,6 @@ proxy-groups:
   - INTERNET
 - name: Sosmed
   type: select
-  disable-udp: false
   use:
   - AKUN ID
   - AKUN SG
@@ -116,7 +105,6 @@ proxy-groups:
   - INTERNET
 - name: 18+
   type: select
-  disable-udp: false
   proxies:
   - INTERNET
   - Indonesia
@@ -124,7 +112,6 @@ proxy-groups:
   - REJECT
 - name: Zerotier
   type: select
-  disable-udp: false
   proxies:
   - INTERNET
   - Indonesia
@@ -165,10 +152,6 @@ dns:
   - 1.1.1.1
   - 8.8.8.8
   - 192.168.8.1 #Ganti dgn IP Modem kamu
-  nameserver-policy:
-    "geosite:rule-indo":
-    - 1.0.0.1
-    - 8.8.4.4
   proxy-server-nameserver:
   - 1.0.0.1
   - 8.8.4.4
