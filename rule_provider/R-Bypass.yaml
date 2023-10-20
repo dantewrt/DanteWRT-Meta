@@ -3,3 +3,5 @@ payload:
   - DOMAIN,pagead2.googlesyndication.com
   - DOMAIN,adservice.google.com
   - DOMAIN-SUFFIX,googleadservices.com
+  - DOMAIN-KEYWORD,click
+  - DOMAIN,stun.l.google.com
