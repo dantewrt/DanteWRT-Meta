@@ -200,12 +200,17 @@ rules:
 - RULE-SET,R-Bank,E-Wallet - Bank
 #Marketplace-ID
 - GEOSITE,ecommerce-id,Marketplace-ID
+- DST-PORT,20443,Marketplace-ID
+- DOMAIN,content.garena.com,Marketplace-ID
 #ZEROTIER
 - RULE-SET,R-Zerotier,Zerotier
 #STREAMING
 - GEOSITE,rule-streaming,Streaming
 #SOSMED
 - GEOSITE,rule-sosmed,Sosmed
+- GEOIP,twitter,Sosmed
+- GEOIP,facebook,Sosmed
+- GEOIP,telegram,Sosmed
 #GAMING
 - AND,((RULE-SET,R-Portgames),(NETWORK,TCP)),Gaming TCP
 - AND,((RULE-SET,R-Portgames),(NETWORK,UDP)),Gaming UDP
