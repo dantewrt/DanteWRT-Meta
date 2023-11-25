@@ -5,28 +5,30 @@ proxy-providers:
     path: "./proxy_provider/INDO.yaml"
     health-check:
       enable: true
-      url: http://ping.xmbb.net
+      url: http://www.gstatic.com/generate_204
       interval: '180'
   AKUN SG:
     type: file
     path: "./proxy_provider/VPN.yaml"
     health-check:
       enable: true
-      url: http://ping.xmbb.net
+      url: http://www.gstatic.com/generate_204
       interval: '180'
 proxy-groups:
 - name: Indonesia
-  type: select
+  type: fallback
+  lazy: false
   use:
   - AKUN ID
-  url: http://ping.xmbb.net
-  interval: '180'
+  url: http://www.gstatic.com/generate_204
+  interval: '360'
 - name: Singapore
-  type: select
+  type: fallback
+  lazy: false
   use:
   - AKUN SG
-  url: http://ping.xmbb.net
-  interval: '180'
+  url: http://www.gstatic.com/generate_204
+  interval: '360'
 - name: INTERNET
   type: select
   proxies:
@@ -34,7 +36,7 @@ proxy-groups:
   - DIRECT
   - Indonesia
   - Singapore
-- name: Jalur Direct
+- name: Jalur Direct(DoT-NTP-DoH) #Jika Tidak ada Kuota reguler, Arahkan Selector ke INTERNET
   type: select
   proxies:
   - DIRECT
@@ -49,6 +51,15 @@ proxy-groups:
   - Indonesia
   - DIRECT
 - name: Marketplace-ID
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  proxies:
+  - INTERNET
+  - Indonesia
+  - DIRECT
+- name: Koneksi-ID(Netflix-dll)
   type: select
   use:
   - AKUN ID
@@ -85,25 +96,38 @@ proxy-groups:
   proxies:
   - REJECT
   - INTERNET
-- name: Streaming
+  - Indonesia
+  - Singapore
+- name: Streaming(YouTube)
   type: select
   use:
   - AKUN ID
   - AKUN SG
   proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
   - DIRECT
   - REJECT
-  - INTERNET
 - name: Sosmed
   type: select
   use:
   - AKUN ID
   - AKUN SG
   proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
   - DIRECT
   - REJECT
-  - INTERNET
 - name: 18+
+  type: select
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - REJECT
+- name: Bypass
   type: select
   proxies:
   - INTERNET
@@ -118,50 +142,149 @@ proxy-groups:
   - Singapore
   - REJECT
   - DIRECT
-redir-port: 7892
-tproxy-port: 7895
 port: 7890
 socks-port: 7891
+redir-port: 7892
 mixed-port: 7893
+tproxy-port: 7895
 mode: rule
-log-level: debug
+log-level: silent
 allow-lan: true
 external-controller: 0.0.0.0:9090
 secret: 12345
 bind-address: "*"
 external-ui: "/usr/share/openclash/ui"
 ipv6: false
-geodata-mode: true
+geodata-mode: false
 geodata-loader: memconservative
 tcp-concurrent: true
 unified-delay: true
 find-process-mode: 'off'
 global-client-fingerprint: none
+keep-alive-interval: 30
 dns:
   enable: true
   ipv6: false
+  prefer-h3: false
+  use-hosts: true
   default-nameserver:
-  - 1.1.1.1
-  - 1.0.0.1
   - 8.8.8.8
   - 8.8.4.4
-  - 192.168.8.1 #Ganti dgn IP Modem kamu
-  enhanced-mode: redir-host
+  - 192.168.8.1
+  enhanced-mode: fake-ip
   listen: 0.0.0.0:7874
   nameserver:
-  - 1.1.1.1
   - 8.8.8.8
-  - 192.168.8.1 #Ganti dgn IP Modem kamu
-  proxy-server-nameserver:
-  - 1.0.0.1
   - 8.8.4.4
+  - 192.168.8.1
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+  - "*.lan"
+  - "*.localdomain"
+  - "*.example"
+  - "*.invalid"
+  - "*.localhost"
+  - "*.test"
+  - "*.local"
+  - "*.home.arpa"
+  - time.*.com
+  - time.*.gov
+  - time.*.edu.cn
+  - time.*.apple.com
+  - time-ios.apple.com
+  - time1.*.com
+  - time2.*.com
+  - time3.*.com
+  - time4.*.com
+  - time5.*.com
+  - time6.*.com
+  - time7.*.com
+  - ntp.*.com
+  - ntp1.*.com
+  - ntp2.*.com
+  - ntp3.*.com
+  - ntp4.*.com
+  - ntp5.*.com
+  - ntp6.*.com
+  - ntp7.*.com
+  - "*.time.edu.cn"
+  - "*.ntp.org.cn"
+  - "+.pool.ntp.org"
+  - time1.cloud.tencent.com
+  - music.163.com
+  - "*.music.163.com"
+  - "*.126.net"
+  - musicapi.taihe.com
+  - music.taihe.com
+  - songsearch.kugou.com
+  - trackercdn.kugou.com
+  - "*.kuwo.cn"
+  - api-jooxtt.sanook.com
+  - api.joox.com
+  - joox.com
+  - y.qq.com
+  - "*.y.qq.com"
+  - streamoc.music.tc.qq.com
+  - mobileoc.music.tc.qq.com
+  - isure.stream.qqmusic.qq.com
+  - dl.stream.qqmusic.qq.com
+  - aqqmusic.tc.qq.com
+  - amobile.music.tc.qq.com
+  - "*.xiami.com"
+  - "*.music.migu.cn"
+  - music.migu.cn
+  - "+.msftconnecttest.com"
+  - "+.msftncsi.com"
+  - msftconnecttest.com
+  - msftncsi.com
+  - localhost.ptlogin2.qq.com
+  - localhost.sec.qq.com
+  - "+.srv.nintendo.net"
+  - "*.n.n.srv.nintendo.net"
+  - "+.stun.playstation.net"
+  - xbox.*.*.microsoft.com
+  - "*.*.xboxlive.com"
+  - xbox.*.microsoft.com
+  - xnotify.xboxlive.com
+  - "+.battlenet.com.cn"
+  - "+.wotgame.cn"
+  - "+.wggames.cn"
+  - "+.wowsgame.cn"
+  - "+.wargaming.net"
+  - proxy.golang.org
+  - stun.*.*
+  - stun.*.*.*
+  - "+.stun.*.*"
+  - "+.stun.*.*.*"
+  - "+.stun.*.*.*.*"
+  - "+.stun.*.*.*.*.*"
+  - heartbeat.belkin.com
+  - "*.linksys.com"
+  - "*.linksyssmartwifi.com"
+  - "*.router.asus.com"
+  - mesu.apple.com
+  - swscan.apple.com
+  - swquery.apple.com
+  - swdownload.apple.com
+  - swcdn.apple.com
+  - swdist.apple.com
+  - lens.l.google.com
+  - stun.l.google.com
+  - "+.nflxvideo.net"
+  - "*.square-enix.com"
+  - "*.finalfantasyxiv.com"
+  - "*.ffxiv.com"
+  - "*.ff14.sdo.com"
+  - ff.dorado.sdo.com
+  - "*.mcdn.bilivideo.cn"
+  - "+.media.dssott.com"
+  - shark007.net
 profile:
   store-selected: true
   store-fake-ip: true
 sniffer:
   enable: true
-  force-dns-mapping: true
-  parse-pure-ip: true
+  ParsePureIp: true
   force-domain:
   - "+.netflix.com"
   - "+.nflxvideo.net"
@@ -176,8 +299,6 @@ sniffer:
     TLS:
       ports:
       - 443
-      - 182-183
-      - 853
       - 8443
     HTTP:
       ports:
@@ -186,10 +307,10 @@ sniffer:
       override-destination: true
 rules:
 - GEOIP,private,DIRECT,no-resolve
-- RULE-SET,R-Direct,Jalur Direct
-- GEOSITE,rule-doh,Jalur Direct
+- RULE-SET,R-Direct,Jalur Direct(DoT-NTP-DoH)
+- GEOSITE,rule-doh,Jalur Direct(DoT-NTP-DoH)
 #AdsBlock
-- RULE-SET,R-Bypass,INTERNET
+- RULE-SET,R-Bypass,Bypass
 - GEOSITE,rule-malicious,Blokir-Iklan
 - GEOSITE,oisd-full,Blokir-Iklan
 - GEOSITE,rule-ads,Blokir-Iklan
@@ -204,8 +325,11 @@ rules:
 - DOMAIN,content.garena.com,Marketplace-ID
 #ZEROTIER
 - RULE-SET,R-Zerotier,Zerotier
+#INDO-ONLY
+- GEOSITE,rule-indo,Koneksi-ID(Netflix-dll)
+- GEOIP,netflix,Koneksi-ID(Netflix-dll)
 #STREAMING
-- GEOSITE,rule-streaming,Streaming
+- GEOSITE,youtube,Streaming(YouTube)
 #SOSMED
 - GEOSITE,rule-sosmed,Sosmed
 - GEOIP,twitter,Sosmed
@@ -245,11 +369,3 @@ rule-providers:
     type: file
     behavior: classical
     path: "./rule_provider/R-Portgames.yaml"
-tun:
-  enable: true
-  stack: system
-  device: utun
-  auto-route: false
-  auto-detect-interface: false
-  dns-hijack:
-  - tcp://any:53
