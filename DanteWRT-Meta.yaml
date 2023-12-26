@@ -155,13 +155,13 @@ secret: 12345
 bind-address: "*"
 external-ui: "/usr/share/openclash/ui"
 ipv6: false
-geodata-mode: false
+geodata-mode: true
 geodata-loader: memconservative
 tcp-concurrent: true
 unified-delay: true
 find-process-mode: 'off'
 global-client-fingerprint: none
-keep-alive-interval: 30
+keep-alive-interval: 15
 dns:
   enable: true
   ipv6: false
@@ -279,6 +279,15 @@ dns:
   - "*.mcdn.bilivideo.cn"
   - "+.media.dssott.com"
   - shark007.net
+  - "+.qq.com"
+  - "+.tencent.com"
+  - na.b.g-tun.com
+  - Mijia Cloud
+  - "+.cmbchina.com"
+  - "+.cmbimg.com"
+  - local.adguard.org
+  - "+.sandai.net"
+  - "+.n0808.com"
 profile:
   store-selected: true
   store-fake-ip: true
