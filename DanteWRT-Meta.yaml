@@ -160,7 +160,6 @@ geodata-loader: memconservative
 tcp-concurrent: true
 unified-delay: true
 find-process-mode: 'off'
-global-client-fingerprint: none
 keep-alive-interval: 15
 dns:
   enable: true
