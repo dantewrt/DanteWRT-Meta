@@ -22,8 +22,8 @@ Settingan pada Tab Plugin Settings berikut :
 
 #### Operation Mode
 
-- Operation Mode Pastikan pada mode **Redir-Host Mode**, jika belum **SWITCH PAGE TO REDIR-HOST MODE** terlebih dahulu
-- Select Mode **Redir-host(tun-mode)**
+- Operation Mode Pastikan pada mode **Fake-IP Mode**, jika belum **SWITCH PAGE TO FAKE-IP MODE** terlebih dahulu
+- Select Mode **Fake-IP(tun-mode)**
 - Centang Enable Meta Core
 - Ceklist/centang opsi sesuai gambar berikut:
 
@@ -69,7 +69,7 @@ force-domain:
 ```
 sniff:
   TLS:
-    ports: [443, 853, 8443]
+    ports: [443, 8443]
   HTTP:
     ports: [80, 8080-8880]
     override-destination: true
@@ -82,6 +82,7 @@ skip-sni:
   - '+.courier.push.apple.com'
   - 'Mijia Cloud'
   - '+.jd.com'
+  - dlg.io.mi.com
 ```
 ### GEOIP
 
