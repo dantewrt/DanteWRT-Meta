@@ -1,3 +1,50 @@
+*Daftar GeoSite yang digunakan*
+- **DNS DoH**
+  - `geosite:rule-doh`
+- **Adblock**
+  - `geosite:rule-malicious`
+  - `geosite:oisd-full`
+   - `geosite:rule-ads`
+- **Porn 18+**
+  - `geosite:oisd-nsfw`
+  - `geosite:category-porn`
+- **Speedtest**
+  - `geosite:rule-speedtest`
+  - [Cek List disini](https://github.com/snowmancerr/v2ray-rules-dat/blob/rule/rule_speedtest.txt)
+- **Koneksi Umum**
+  - `geosite:rule-umum`
+  - [Cek List disini](https://github.com/snowmancerr/v2ray-rules-dat/blob/rule/rule_umum.txt)
+- **Bank ID**
+  - `geosite:bank-id`
+  - [Cek List disini](https://github.com/snowmancerr/v2ray-rules-dat/blob/rule/rule_bank-id.txt)
+- **Marketplace-ID**
+  - `geosite:ecommerce-id`
+    - Lazada
+    - Tokopedia
+    - Shopee
+    - [Cek List disini](https://github.com/snowmancerr/v2ray-rules-dat/blob/rule/rule_ecommerce.txt)
+- **Koneksi INDO**
+  - `geosite:rule-indo`
+  - [Cek List disini](https://github.com/snowmancerr/v2ray-rules-dat/blob/rule/rule_indo.txt)
+- **YouTube**
+  - `geosite:youtube`
+- **Sosmed**
+  - `geosite:rule-sosmed`
+  - `geoip:twitter`
+  - `geoip:facebook`
+  - `geoip:telegram`
+  - [Cek List disini](https://github.com/snowmancerr/v2ray-rules-dat/blob/rule/rule_sosmed.txt)
+- **WhatsApp**
+  - `geosite:whatsapp`
+- **Streaming**
+  - `geosite:rule-streaming`
+  - [Cek List disini](https://github.com/snowmancerr/v2ray-rules-dat/blob/rule/rule_streaming.txt)
+  - `geosite:videoconference`
+  - [Cek List disini](https://github.com/snowmancerr/v2ray-rules-dat/blob/rule/rule-videoconference.txt)
+- **Gaming**
+  - `geosite:rule-gaming`
+  - [Cek List disini](https://github.com/snowmancerr/v2ray-rules-dat/blob/rule/rule_gaming.txt)
+  
 ## Credits
 Special Thanks To
 - [malikshi](https://github.com/malikshi/open_meta)
