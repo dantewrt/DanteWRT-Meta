@@ -1,0 +1,521 @@
+---
+proxy-providers:
+  AKUN ID:
+    type: file
+    path: "./proxy_provider/INDO.yaml"
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com/generate_204
+      interval: '180'
+  AKUN SG:
+    type: file
+    path: "./proxy_provider/VPN.yaml"
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com/generate_204
+      interval: '180'
+  AKUN WORLD:
+    type: file
+    path: "./proxy_provider/WORLD.yaml"
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com/generate_204
+      interval: '180'
+proxy-groups:
+- name: Indonesia
+  type: fallback
+  lazy: false
+  use:
+  - AKUN ID
+  url: https://cp.cloudflare.com/generate_204
+  interval: '90'
+- name: Singapore
+  type: fallback
+  lazy: false
+  use:
+  - AKUN SG
+  url: https://cp.cloudflare.com/generate_204
+  interval: '90'
+- name: World
+  type: fallback
+  lazy: false
+  use:
+  - AKUN WORLD
+  url: https://cp.cloudflare.com/generate_204
+  interval: '90'
+- name: INTERNET
+  type: select
+  proxies:
+  - Indonesia
+  - Singapore
+  - World
+  - Direct WAN A
+  - Direct WAN B
+- name: Direct WAN A
+  type: select
+  interface-name: INTERFACE-WAN-A
+  proxies:
+  - DIRECT
+- name: Direct WAN B
+  type: select
+  interface-name: INTERFACE-WAN-B
+  proxies:
+  - DIRECT
+- name: Jalur Direct(DoT-NTP-DoH) #Jika Tidak ada Kuota reguler, Arahkan Selector ke INTERNET
+  type: select
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - Direct WAN A
+  - Direct WAN B
+- name: WhatsApp
+  type: select
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - Direct WAN A
+  - Direct WAN B
+- name: E-Wallet & Bank
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  - AKUN WORLD
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - Direct WAN A
+  - Direct WAN B
+- name: Marketplace-ID
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  - AKUN WORLD
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - Direct WAN A
+  - Direct WAN B
+- name: Koneksi-ID(Netflix-Vidio-Disney-dll)
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  - AKUN WORLD
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - Direct WAN A
+  - Direct WAN B
+- name: Gaming TCP
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  - AKUN WORLD
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - Direct WAN A
+  - Direct WAN B
+- name: Gaming UDP
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  - AKUN WORLD
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - Direct WAN A
+  - Direct WAN B
+- name: Speedtest
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  - AKUN WORLD
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - Direct WAN A
+  - Direct WAN B
+- name: Blokir-Iklan
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  - AKUN WORLD
+  proxies:
+  - REJECT
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+- name: 18+
+  type: select
+  proxies:
+  - REJECT
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+- name: YouTube
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  - AKUN WORLD
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - Direct WAN A
+  - Direct WAN B
+- name: Streaming
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  - AKUN WORLD
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - Direct WAN A
+  - Direct WAN B
+- name: Sosmed
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  - AKUN WORLD
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - Direct WAN A
+  - Direct WAN B
+- name: Bypass
+  type: select
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7895
+mode: rule
+log-level: debug
+allow-lan: true
+external-controller: 0.0.0.0:9090
+secret: '12345'
+bind-address: "*"
+external-ui: "/usr/share/openclash/ui"
+ipv6: false
+geodata-mode: true
+geodata-loader: memconservative
+tcp-concurrent: true
+unified-delay: true
+find-process-mode: 'off'
+global-client-fingerprint: chrome
+keep-alive-interval: 15
+dns:
+  enable: true
+  ipv6: false
+  prefer-h3: false
+  use-hosts: true
+  default-nameserver:
+  - 9.9.9.9#INTERFACE-WAN-A
+  - 1.1.1.1#INTERFACE-WAN-B
+  enhanced-mode: fake-ip
+  listen: 0.0.0.0:7874
+  nameserver:
+  - 9.9.9.9#Indonesia
+  - 1.1.1.1#Singapore
+  - 8.8.8.8#World
+  fallback:
+  - 149.112.112.112:53#Indonesia
+  - 1.0.0.1:53#Singapore
+  - 8.8.4.4:53#World
+  nameserver-policy:
+    geosite:oisd-full,rule-malicious: rcode://success
+    rule-set:R-Umum: 9.9.9.9#INTERNET
+    geosite:rule-umum: 9.9.9.9#INTERNET
+    rule-set:R-Bypass: 8.8.4.4#Bypass
+    rule-set:R-Apple: 1.1.1.1#Bypass
+    geosite:rule-sosmed: 1.0.0.1#Sosmed
+    geosite:rule-indo: 149.112.112.112#Koneksi-ID(Netflix-Vidio-Disney-dll)
+    geosite:bank-id: 149.112.112.112#E-Wallet - Bank
+    rule-set:R-Bank: 149.112.112.112#E-Wallet - Bank
+    geosite:ecommerce-id: 149.112.112.112#Marketplace-ID
+    rule-set:R-Whatsapp: 208.67.220.220#WhatsApp
+    geosite:oisd-nfsw,category-porn: 208.67.220.220#18+
+    geosite:rule-ads: 208.67.222.222#Blokir-Iklan
+    geosite:youtube: 8.8.8.8#YouTube
+    geosite:rule-streaming,videoconference: 1.1.1.1#Streaming
+    geosite:rule-speedtest: 8.8.4.4#Speedtest
+    geosite:rule-gaming: 8.8.8.8#Gaming TCP
+  proxy-server-nameserver:
+  - 112.215.198.248#INTERFACE-WAN-A
+  - 112.215.198.254#INTERFACE-WAN-B
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+  - "*.lan"
+  - "*.localdomain"
+  - "*.example"
+  - "*.invalid"
+  - "*.localhost"
+  - "*.test"
+  - "*.local"
+  - "*.home.arpa"
+  - time.*.com
+  - time.*.gov
+  - time.*.edu.cn
+  - time.*.apple.com
+  - time-ios.apple.com
+  - time1.*.com
+  - time2.*.com
+  - time3.*.com
+  - time4.*.com
+  - time5.*.com
+  - time6.*.com
+  - time7.*.com
+  - ntp.*.com
+  - ntp1.*.com
+  - ntp2.*.com
+  - ntp3.*.com
+  - ntp4.*.com
+  - ntp5.*.com
+  - ntp6.*.com
+  - ntp7.*.com
+  - "*.time.edu.cn"
+  - "*.ntp.org.cn"
+  - "+.pool.ntp.org"
+  - time1.cloud.tencent.com
+  - music.163.com
+  - "*.music.163.com"
+  - "*.126.net"
+  - musicapi.taihe.com
+  - music.taihe.com
+  - songsearch.kugou.com
+  - trackercdn.kugou.com
+  - "*.kuwo.cn"
+  - api-jooxtt.sanook.com
+  - api.joox.com
+  - joox.com
+  - y.qq.com
+  - "*.y.qq.com"
+  - streamoc.music.tc.qq.com
+  - mobileoc.music.tc.qq.com
+  - isure.stream.qqmusic.qq.com
+  - dl.stream.qqmusic.qq.com
+  - aqqmusic.tc.qq.com
+  - amobile.music.tc.qq.com
+  - "*.xiami.com"
+  - "*.music.migu.cn"
+  - music.migu.cn
+  - "+.msftconnecttest.com"
+  - "+.msftncsi.com"
+  - msftconnecttest.com
+  - msftncsi.com
+  - localhost.ptlogin2.qq.com
+  - localhost.sec.qq.com
+  - "+.srv.nintendo.net"
+  - "*.n.n.srv.nintendo.net"
+  - "+.stun.playstation.net"
+  - xbox.*.*.microsoft.com
+  - "*.*.xboxlive.com"
+  - xbox.*.microsoft.com
+  - xnotify.xboxlive.com
+  - "+.battlenet.com.cn"
+  - "+.wotgame.cn"
+  - "+.wggames.cn"
+  - "+.wowsgame.cn"
+  - "+.wargaming.net"
+  - proxy.golang.org
+  - stun.*.*
+  - stun.*.*.*
+  - "+.stun.*.*"
+  - "+.stun.*.*.*"
+  - "+.stun.*.*.*.*"
+  - "+.stun.*.*.*.*.*"
+  - heartbeat.belkin.com
+  - "*.linksys.com"
+  - "*.linksyssmartwifi.com"
+  - "*.router.asus.com"
+  - mesu.apple.com
+  - swscan.apple.com
+  - swquery.apple.com
+  - swdownload.apple.com
+  - swcdn.apple.com
+  - swdist.apple.com
+  - lens.l.google.com
+  - stun.l.google.com
+  - "+.nflxvideo.net"
+  - "*.square-enix.com"
+  - "*.finalfantasyxiv.com"
+  - "*.ffxiv.com"
+  - "*.ff14.sdo.com"
+  - ff.dorado.sdo.com
+  - "*.mcdn.bilivideo.cn"
+  - "+.media.dssott.com"
+  - shark007.net
+  - "+.qq.com"
+  - "+.tencent.com"
+  - na.b.g-tun.com
+  - Mijia Cloud
+  - "+.cmbchina.com"
+  - "+.cmbimg.com"
+  - local.adguard.org
+  - "+.sandai.net"
+  - "+.n0808.com"
+profile:
+  store-selected: true
+  store-fake-ip: false
+sniffer:
+  enable: true
+  parse-pure-ip: true
+  force-domain:
+  - "+.netflix.com"
+  - "+.nflxvideo.net"
+  - "+.amazonaws.com"
+  - "+.media.dssot.com"
+  skip-domain:
+  - "+.apple.com"
+  - Mijia Cloud
+  - "+.jd.com"
+  - dlg.io.mi.com
+  sniff:
+    TLS:
+      ports:
+      - 443
+      - 2053
+      - 2083
+      - 2087
+      - 2096
+      - 8443
+    HTTP:
+      ports:
+      - 80
+      - 8080
+      - 8880
+      - 2052
+      - 2082
+      - 2086
+      - 2095
+      override-destination: true
+rules:
+- GEOIP,private,DIRECT,no-resolve
+#DoT-NTP-DoH
+- DST-PORT,853,Jalur Direct(DoT-NTP-DoH)
+- DST-PORT,123,Jalur Direct(DoT-NTP-DoH)
+- GEOSITE,rule-doh,Jalur Direct(DoT-NTP-DoH)
+#AdsBlock
+- RULE-SET,R-Bypass,Bypass
+- RULE-SET,R-Apple,Bypass
+- GEOSITE,rule-malicious,REJECT
+- GEOSITE,oisd-full,REJECT
+- GEOSITE,rule-ads,Blokir-Iklan
+#Dewasa18+
+- GEOSITE,oisd-nsfw,18+
+- GEOSITE,category-porn,18+
+#Speedtest
+- GEOSITE,rule-speedtest,Speedtest
+- DST-PORT,8080,Speedtest
+- GEOSITE,rule-umum,INTERNET
+#Zerotier
+- OR,((GEOSITE,rule-umum),(DST-PORT,9993/29994/40775/43215)),INTERNET
+#Bardi
+- DST-PORT,8886,INTERNET
+#BANK
+- RULE-SET,R-Bank,E-Wallet - Bank
+- GEOSITE,bank-id,E-Wallet - Bank
+#Marketplace-ID
+- GEOSITE,ecommerce-id,Marketplace-ID
+- DST-PORT,20443,Marketplace-ID
+- DOMAIN,content.garena.com,Marketplace-ID
+#INDO-ONLY
+- GEOSITE,rule-indo,Koneksi-ID(Netflix-Vidio-Disney-dll)
+- GEOIP,netflix,Koneksi-ID(Netflix-Vidio-Disney-dll)
+#Spotify
+- DST-PORT,4070,Koneksi-ID(Netflix-Vidio-Disney-dll),tcp
+- DST-PORT,4070,Koneksi-ID(Netflix-Vidio-Disney-dll),udp
+#YouTube
+- GEOSITE,youtube,YouTube
+#SOSMED
+- GEOSITE,rule-sosmed,Sosmed
+#WhatsApp
+- GEOSITE,whatsapp,WhatsApp
+- RULE-SET,R-Whatsapp,WhatsApp
+#SOSMED
+- GEOIP,twitter,Sosmed
+- GEOIP,facebook,Sosmed
+- GEOIP,telegram,Sosmed
+#Streaming
+- GEOSITE,rule-streaming,Streaming
+- GEOSITE,videoconference,Streaming
+#Remote Desktop Connection (TeamViewer,Anydesk,Rustdesk)
+- OR,((DST-PORT,6568/7070),(DOMAIN-SUFFIX,net.anydesk.com)),Streaming
+- AND,((DST-PORT,5938),(DOMAIN-SUFFIX,teamviewer.com)),Streaming
+- AND,((DST-PORT,21115-21119),(NETWORK,TCP)),Streaming
+- AND,((DST-PORT,21116),(NETWORK,UDP)),Streaming
+#VideoConference
+- DST-PORT,3478-3497/8801-8810/16384-16387/1853/8200/5004/9000/5090-5091/5349/10000/19302-19309/5938/5060-5061/500/4500,Streaming
+#GAMING
+- AND,((RULE-SET,R-Portgames),(NETWORK,TCP)),Gaming TCP
+- AND,((RULE-SET,R-Portgames),(NETWORK,UDP)),Gaming UDP
+- AND,((NOT,((RULE-SET,R-Umum))),(NETWORK,TCP)),Gaming TCP
+- AND,((GEOSITE,rule-gaming),(NETWORK,TCP)),Gaming TCP
+- AND,((GEOSITE,rule-gaming),(NETWORK,UDP)),Gaming UDP
+- AND,((NOT,((RULE-SET,R-Umum))),(NETWORK,UDP)),Gaming UDP
+#Koneksi Umum
+- RULE-SET,R-Umum,INTERNET
+rule-providers:
+  R-Whatsapp:
+    type: file
+    behavior: classical
+    path: "./rule_provider/R-Whatsapp.yaml"
+  R-Umum:
+    type: file
+    behavior: classical
+    path: "./rule_provider/R-Umum.yaml"
+  R-Bank:
+    type: file
+    behavior: classical
+    path: "./rule_provider/R-Bank.yaml"
+  R-Bypass:
+    type: file
+    behavior: classical
+    path: "./rule_provider/R-Bypass.yaml"
+  R-Portgames:
+    type: file
+    behavior: classical
+    path: "./rule_provider/R-Portgames.yaml"
+  R-Apple:
+    type: file
+    behavior: domain
+    path: "./rule_provider/R-Apple.yaml"
