@@ -7,7 +7,6 @@ payload:
 - DOMAIN-SUFFIX,octoclicks.co.id
 - DOMAIN-SUFFIX,i-saku.com
 - DOMAIN-SUFFIX,doku.com
-- DOMAIN-SUFFIX,shopeepay.co.id
 - DOMAIN-SUFFIX,grab.com
 - DOMAIN-SUFFIX,grabtaxi.com
 - DOMAIN-KEYWORD,gojek
@@ -20,6 +19,14 @@ payload:
 - DOMAIN-KEYWORD,shopeepay
 - DOMAIN-KEYWORD,grab
 - DOMAIN-KEYWORD,grabtaxi
+
+#ShopeePay
+- DOMAIN-SUFFIX,shopeepay.co.id
+- DOMAIN-SUFFIX,airpay.co.id
+
+# SPinjam
+- DOMAIN-SUFFIX,lenteradana.co.id
+- DOMAIN,spl-h5.cmf.co.id
 
 #Go-Pay [Go-Jek]
 - DOMAIN-KEYWORD,gopay-topup
