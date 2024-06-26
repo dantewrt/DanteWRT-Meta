@@ -408,34 +408,61 @@ sniffer:
       override-destination: true
 rules:
 - GEOIP,private,DIRECT,no-resolve
-- RULE-SET,R-Direct,Jalur Direct(DoT-NTP-DoH)
+#DoT-NTP-DoH
+- DST-PORT,853,Jalur Direct(DoT-NTP-DoH)
+- DST-PORT,123,Jalur Direct(DoT-NTP-DoH)
 - GEOSITE,rule-doh,Jalur Direct(DoT-NTP-DoH)
 #AdsBlock
 - RULE-SET,R-Bypass,Bypass
-- GEOSITE,rule-malicious,Blokir-Iklan
-- GEOSITE,oisd-full,Blokir-Iklan
+- RULE-SET,R-Apple,Bypass
+- GEOSITE,rule-malicious,REJECT
+- GEOSITE,oisd-full,REJECT
 - GEOSITE,rule-ads,Blokir-Iklan
 #Dewasa18+
 - GEOSITE,oisd-nsfw,18+
 - GEOSITE,category-porn,18+
+#Speedtest
+- GEOSITE,rule-speedtest,Speedtest
+- DST-PORT,8080,Speedtest
+- GEOSITE,rule-umum,INTERNET
+#Zerotier
+- OR,((GEOSITE,rule-umum),(DST-PORT,9993/29994/40775/43215)),INTERNET
+#Bardi
+- DST-PORT,8886,INTERNET
 #BANK
 - RULE-SET,R-Bank,E-Wallet - Bank
+- GEOSITE,bank-id,E-Wallet - Bank
 #Marketplace-ID
 - GEOSITE,ecommerce-id,Marketplace-ID
 - DST-PORT,20443,Marketplace-ID
 - DOMAIN,content.garena.com,Marketplace-ID
-#ZEROTIER
-- RULE-SET,R-Zerotier,Zerotier
 #INDO-ONLY
 - GEOSITE,rule-indo,Koneksi-ID(Netflix-dll)
 - GEOIP,netflix,Koneksi-ID(Netflix-dll)
-#STREAMING
-- GEOSITE,youtube,Streaming(YouTube)
+#Spotify
+- DST-PORT,4070,Koneksi-ID(Netflix-Vidio-Disney-dll),tcp
+- DST-PORT,4070,Koneksi-ID(Netflix-Vidio-Disney-dll),udp
+#YouTube
+- GEOSITE,youtube,YouTube
 #SOSMED
 - GEOSITE,rule-sosmed,Sosmed
+#WhatsApp
+- GEOSITE,whatsapp,WhatsApp
+- RULE-SET,R-Whatsapp,WhatsApp
+#SOSMED
 - GEOIP,twitter,Sosmed
 - GEOIP,facebook,Sosmed
 - GEOIP,telegram,Sosmed
+#Streaming
+- GEOSITE,rule-streaming,Streaming
+- GEOSITE,videoconference,Streaming
+#Remote Desktop Connection (TeamViewer,Anydesk,Rustdesk)
+- OR,((DST-PORT,6568/7070),(DOMAIN-SUFFIX,net.anydesk.com)),Streaming
+- AND,((DST-PORT,5938),(DOMAIN-SUFFIX,teamviewer.com)),Streaming
+- AND,((DST-PORT,21115-21119),(NETWORK,TCP)),Streaming
+- AND,((DST-PORT,21116),(NETWORK,UDP)),Streaming
+#VideoConference
+- DST-PORT,3478-3497/8801-8810/16384-16387/1853/8200/5004/9000/5090-5091/5349/10000/19302-19309/5938/5060-5061/500/4500,Streaming
 #GAMING
 - AND,((RULE-SET,R-Portgames),(NETWORK,TCP)),Gaming TCP
 - AND,((RULE-SET,R-Portgames),(NETWORK,UDP)),Gaming UDP
@@ -446,10 +473,10 @@ rules:
 #Koneksi Umum
 - RULE-SET,R-Umum,INTERNET
 rule-providers:
-  R-Direct:
+  R-Whatsapp:
     type: file
     behavior: classical
-    path: "./rule_provider/R-Direct.yaml"
+    path: "./rule_provider/R-Whatsapp.yaml"
   R-Umum:
     type: file
     behavior: classical
@@ -458,10 +485,6 @@ rule-providers:
     type: file
     behavior: classical
     path: "./rule_provider/R-Bank.yaml"
-  R-Zerotier:
-    type: file
-    behavior: classical
-    path: "./rule_provider/R-Zerotier.yaml"
   R-Bypass:
     type: file
     behavior: classical
@@ -470,3 +493,7 @@ rule-providers:
     type: file
     behavior: classical
     path: "./rule_provider/R-Portgames.yaml"
+  R-Apple:
+    type: file
+    behavior: domain
+    path: "./rule_provider/R-Apple.yaml"
