@@ -207,7 +207,7 @@ redir-port: 7892
 mixed-port: 7893
 tproxy-port: 7895
 mode: rule
-log-level: silent
+log-level: debug
 allow-lan: true
 external-controller: 0.0.0.0:9090
 secret: 12345
@@ -219,6 +219,7 @@ geodata-loader: memconservative
 tcp-concurrent: true
 unified-delay: true
 find-process-mode: 'off'
+global-client-fingerprint: chrome
 keep-alive-interval: 15
 dns:
   enable: true
@@ -372,7 +373,7 @@ dns:
   - "+.n0808.com"
 profile:
   store-selected: true
-  store-fake-ip: true
+  store-fake-ip: false
 sniffer:
   enable: true
   ParsePureIp: true
@@ -390,11 +391,20 @@ sniffer:
     TLS:
       ports:
       - 443
+      - 2053
+      - 2083
+      - 2087
+      - 2096
       - 8443
     HTTP:
       ports:
       - 80
-      - 8080-8880
+      - 8080
+      - 8880
+      - 2052
+      - 2082
+      - 2086
+      - 2095
       override-destination: true
 rules:
 - GEOIP,private,DIRECT,no-resolve
