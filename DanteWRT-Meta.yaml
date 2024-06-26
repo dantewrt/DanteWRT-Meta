@@ -14,6 +14,13 @@ proxy-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: '180'
+  AKUN WORLD:
+    type: file
+    path: "./proxy_provider/WORLD.yaml"
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com/generate_204
+      interval: '180'
 proxy-groups:
 - name: Indonesia
   type: fallback
@@ -29,119 +36,171 @@ proxy-groups:
   - AKUN SG
   url: http://www.gstatic.com/generate_204
   interval: '360'
+- name: World
+  type: fallback
+  lazy: false
+  use:
+  - AKUN WORLD
+  url: https://cp.cloudflare.com/generate_204
+  interval: '90'
 - name: INTERNET
   type: select
   proxies:
-  - REJECT
-  - DIRECT
   - Indonesia
   - Singapore
+  - World
+  - DIRECT
 - name: Jalur Direct(DoT-NTP-DoH) #Jika Tidak ada Kuota reguler, Arahkan Selector ke INTERNET
   type: select
   proxies:
-  - DIRECT
   - INTERNET
-- name: E-Wallet - Bank
+  - Indonesia
+  - Singapore
+  - World
+  - DIRECT
+- name: WhatsApp
+  type: select
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - DIRECT
+- name: E-Wallet & Bank
   type: select
   use:
   - AKUN ID
   - AKUN SG
+  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
+  - Singapore
+  - World
   - DIRECT
 - name: Marketplace-ID
   type: select
   use:
   - AKUN ID
   - AKUN SG
+  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
+  - Singapore
+  - World
   - DIRECT
-- name: Koneksi-ID(Netflix-dll)
+- name: Koneksi-ID(Netflix-Vidio-Disney-dll)
   type: select
   use:
   - AKUN ID
   - AKUN SG
+  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
+  - Singapore
+  - World
   - DIRECT
 - name: Gaming TCP
   type: select
   use:
   - AKUN ID
   - AKUN SG
+  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
+  - World
   - DIRECT
 - name: Gaming UDP
   type: select
   use:
   - AKUN ID
   - AKUN SG
+  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
+  - World
+  - DIRECT
+- name: Speedtest
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  - AKUN WORLD
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
   - DIRECT
 - name: Blokir-Iklan
   type: select
   use:
   - AKUN ID
   - AKUN SG
+  - AKUN WORLD
   proxies:
   - REJECT
   - INTERNET
   - Indonesia
   - Singapore
-- name: Streaming(YouTube)
+  - World
+- name: 18+
+  type: select
+  proxies:
+  - REJECT
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+- name: YouTube
   type: select
   use:
   - AKUN ID
   - AKUN SG
+  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
+  - World
   - DIRECT
-  - REJECT
+- name: Streaming
+  type: select
+  use:
+  - AKUN ID
+  - AKUN SG
+  - AKUN WORLD
+  proxies:
+  - INTERNET
+  - Indonesia
+  - Singapore
+  - World
+  - DIRECT
 - name: Sosmed
   type: select
   use:
   - AKUN ID
   - AKUN SG
+  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
+  - World
   - DIRECT
-  - REJECT
-- name: 18+
-  type: select
-  proxies:
-  - INTERNET
-  - Indonesia
-  - Singapore
-  - REJECT
 - name: Bypass
   type: select
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
-  - REJECT
-- name: Zerotier
-  type: select
-  proxies:
-  - INTERNET
-  - Indonesia
-  - Singapore
-  - REJECT
-  - DIRECT
+  - World
 port: 7890
 socks-port: 7891
 redir-port: 7892
