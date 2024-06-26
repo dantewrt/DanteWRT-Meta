@@ -226,15 +226,39 @@ dns:
   prefer-h3: false
   use-hosts: true
   default-nameserver:
-  - 8.8.8.8
-  - 8.8.4.4
-  - 192.168.8.1
+  - 9.9.9.9#INTERFACE-WAN
+  - 1.1.1.1#INTERFACE-WAN
   enhanced-mode: fake-ip
   listen: 0.0.0.0:7874
   nameserver:
-  - 8.8.8.8
-  - 8.8.4.4
-  - 192.168.8.1
+  - 9.9.9.9#Indonesia
+  - 1.1.1.1#Singapore
+  - 8.8.8.8#World
+  fallback:
+  - 149.112.112.112:53#Indonesia
+  - 1.0.0.1:53#Singapore
+  - 8.8.4.4:53#World
+  nameserver-policy:
+    geosite:oisd-full,rule-malicious: rcode://success
+    rule-set:R-Umum: 9.9.9.9#INTERNET
+    geosite:rule-umum: 9.9.9.9#INTERNET
+    rule-set:R-Bypass: 8.8.4.4#Bypass
+    rule-set:R-Apple: 1.1.1.1#Bypass
+    geosite:rule-sosmed: 1.0.0.1#Sosmed
+    geosite:rule-indo: 149.112.112.112#Koneksi-ID(Netflix-Vidio-Disney-dll)
+    geosite:bank-id: 149.112.112.112#E-Wallet - Bank
+    rule-set:R-Bank: 149.112.112.112#E-Wallet - Bank
+    geosite:ecommerce-id: 149.112.112.112#Marketplace-ID
+    rule-set:R-Whatsapp: 208.67.220.220#WhatsApp
+    geosite:oisd-nfsw,category-porn: 208.67.220.220#18+
+    geosite:rule-ads: 208.67.222.222#Blokir-Iklan
+    geosite:youtube: 8.8.8.8#YouTube
+    geosite:rule-streaming,videoconference: 1.1.1.1#Streaming
+    geosite:rule-speedtest: 8.8.4.4#Speedtest
+    geosite:rule-gaming: 8.8.8.8#Gaming TCP
+  proxy-server-nameserver:
+  - 112.215.198.248#INTERFACE-WAN
+  - 112.215.198.254#INTERFACE-WAN
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
   - "*.lan"
