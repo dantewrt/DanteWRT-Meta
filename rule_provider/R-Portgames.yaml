@@ -68,3 +68,5 @@ payload:
 - DST-PORT,5010/6650/8011/8700/30000
 #RPG Toram Online
 - DST-PORT,30100
+#Wuthering Waves
+- DST-PORT,11003-21909
