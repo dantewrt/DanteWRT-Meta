@@ -247,8 +247,8 @@ dns:
     rule-set:R-Apple: 1.1.1.1#Bypass
     geosite:rule-sosmed: 1.0.0.1#Sosmed
     geosite:rule-indo: 149.112.112.112#Koneksi-ID(Netflix-Vidio-Disney-dll)
-    geosite:bank-id: 149.112.112.112#E-Wallet - Bank
-    rule-set:R-Bank: 149.112.112.112#E-Wallet - Bank
+    geosite:bank-id: 149.112.112.112#E-Wallet & Bank
+    rule-set:R-Bank: 149.112.112.112#E-Wallet & Bank
     geosite:ecommerce-id: 149.112.112.112#Marketplace-ID
     rule-set:R-Whatsapp: 208.67.220.220#WhatsApp
     geosite:oisd-nfsw,category-porn: 208.67.220.220#18+
@@ -430,8 +430,8 @@ rules:
 #Bardi
 - DST-PORT,8886,INTERNET
 #BANK
-- RULE-SET,R-Bank,E-Wallet - Bank
-- GEOSITE,bank-id,E-Wallet - Bank
+- RULE-SET,R-Bank,E-Wallet & Bank
+- GEOSITE,bank-id,E-Wallet & Bank
 #Marketplace-ID
 - GEOSITE,ecommerce-id,Marketplace-ID
 - DST-PORT,20443,Marketplace-ID
