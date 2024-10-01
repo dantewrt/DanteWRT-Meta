@@ -14,193 +14,157 @@ proxy-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: '180'
-  AKUN WORLD:
-    type: file
-    path: "./proxy_provider/WORLD.yaml"
-    health-check:
-      enable: true
-      url: https://cp.cloudflare.com/generate_204
-      interval: '180'
 proxy-groups:
 - name: Indonesia
   type: fallback
   lazy: false
   use:
   - AKUN ID
-  url: http://www.gstatic.com/generate_204
-  interval: '360'
+  url: https://cp.cloudflare.com/generate_204
+  interval: '90'
 - name: Singapore
   type: fallback
   lazy: false
   use:
   - AKUN SG
-  url: http://www.gstatic.com/generate_204
-  interval: '360'
-- name: World
-  type: fallback
-  lazy: false
-  use:
-  - AKUN WORLD
   url: https://cp.cloudflare.com/generate_204
   interval: '90'
 - name: INTERNET
   type: select
   proxies:
+  - REJECT
+  - DIRECT
   - Indonesia
   - Singapore
-  - World
-  - DIRECT
 - name: Jalur Direct(DoT-NTP-DoH) #Jika Tidak ada Kuota reguler, Arahkan Selector ke INTERNET
   type: select
   proxies:
+  - DIRECT
   - INTERNET
   - Indonesia
   - Singapore
-  - World
-  - DIRECT
 - name: WhatsApp
   type: select
   proxies:
+  - DIRECT
   - INTERNET
   - Indonesia
   - Singapore
-  - World
-  - DIRECT
 - name: E-Wallet & Bank
   type: select
   use:
   - AKUN ID
   - AKUN SG
-  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
-  - World
   - DIRECT
 - name: Marketplace-ID
   type: select
   use:
   - AKUN ID
   - AKUN SG
-  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
-  - World
   - DIRECT
 - name: Koneksi-ID(Netflix-Vidio-Disney-dll)
   type: select
   use:
   - AKUN ID
   - AKUN SG
-  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
-  - World
   - DIRECT
 - name: Gaming TCP
   type: select
   use:
   - AKUN ID
   - AKUN SG
-  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
-  - World
   - DIRECT
 - name: Gaming UDP
   type: select
   use:
   - AKUN ID
   - AKUN SG
-  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
-  - World
   - DIRECT
 - name: Speedtest
   type: select
   use:
   - AKUN ID
   - AKUN SG
-  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
-  - World
-  - DIRECT
 - name: Blokir-Iklan
   type: select
   use:
   - AKUN ID
   - AKUN SG
-  - AKUN WORLD
   proxies:
   - REJECT
   - INTERNET
   - Indonesia
   - Singapore
-  - World
 - name: 18+
   type: select
   proxies:
-  - REJECT
   - INTERNET
   - Indonesia
   - Singapore
-  - World
+  - REJECT
 - name: YouTube
   type: select
   use:
   - AKUN ID
   - AKUN SG
-  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
-  - World
   - DIRECT
+  - REJECT
 - name: Streaming
   type: select
   use:
   - AKUN ID
   - AKUN SG
-  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
-  - World
   - DIRECT
+  - REJECT
 - name: Sosmed
   type: select
   use:
   - AKUN ID
   - AKUN SG
-  - AKUN WORLD
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
-  - World
   - DIRECT
+  - REJECT
 - name: Bypass
   type: select
   proxies:
   - INTERNET
   - Indonesia
   - Singapore
-  - World
 port: 7890
 socks-port: 7891
 redir-port: 7892
@@ -227,39 +191,18 @@ dns:
   prefer-h3: false
   use-hosts: true
   default-nameserver:
-  - 9.9.9.9#INTERFACE-WAN
-  - 1.1.1.1#INTERFACE-WAN
+  - 1.1.1.1#INTERFACE-WAN(Example : - 1.1.1.1#eth1)
   enhanced-mode: fake-ip
   listen: 0.0.0.0:7874
   nameserver:
-  - 9.9.9.9#Indonesia
   - 1.1.1.1#Singapore
-  - 8.8.8.8#World
+  - 8.8.8.8#Indonesia
   fallback:
-  - 149.112.112.112:53#Indonesia
-  - 1.0.0.1:53#Singapore
-  - 8.8.4.4:53#World
-  nameserver-policy:
-    geosite:oisd-full,rule-malicious: rcode://success
-    rule-set:R-Umum: 9.9.9.9#INTERNET
-    geosite:rule-umum: 9.9.9.9#INTERNET
-    rule-set:R-Bypass: 8.8.4.4#Bypass
-    rule-set:R-Apple: 1.1.1.1#Bypass
-    geosite:rule-sosmed: 1.0.0.1#Sosmed
-    geosite:rule-indo: 149.112.112.112#Koneksi-ID(Netflix-Vidio-Disney-dll)
-    geosite:bank-id: 149.112.112.112#E-Wallet & Bank
-    rule-set:R-Bank: 149.112.112.112#E-Wallet & Bank
-    geosite:ecommerce-id: 149.112.112.112#Marketplace-ID
-    rule-set:R-Whatsapp: 208.67.220.220#WhatsApp
-    geosite:oisd-nfsw,category-porn: 208.67.220.220#18+
-    geosite:rule-ads: 208.67.222.222#Blokir-Iklan
-    geosite:youtube: 8.8.8.8#YouTube
-    geosite:rule-streaming,videoconference: 1.1.1.1#Streaming
-    geosite:rule-speedtest: 8.8.4.4#Speedtest
-    geosite:rule-gaming: 8.8.8.8#Gaming TCP
+  - 1.0.0.1#Singapore
+  - 8.8.4.4#Indonesia
   proxy-server-nameserver:
-  - 112.215.198.248#INTERFACE-WAN
-  - 112.215.198.254#INTERFACE-WAN
+  - 112.215.198.248#INTERFACE-WAN(Example : - 112.215.198.248#eth1)
+  - 112.215.198.254#INTERFACE-WAN(Example : - 112.215.198.254#eth1)
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
   - "*.lan"
@@ -371,6 +314,8 @@ dns:
   - local.adguard.org
   - "+.sandai.net"
   - "+.n0808.com"
+  respect-rules: true
+  fake-ip-filter-mode: blacklist
 profile:
   store-selected: true
   store-fake-ip: false
@@ -471,6 +416,7 @@ rules:
 - AND,((GEOSITE,rule-gaming),(NETWORK,UDP)),Gaming UDP
 - AND,((NOT,((RULE-SET,R-Umum))),(NETWORK,UDP)),Gaming UDP
 #Koneksi Umum
+- GEOIP,id,Koneksi-ID(Netflix-Vidio-Disney-dll)
 - RULE-SET,R-Umum,INTERNET
 rule-providers:
   R-Whatsapp:
